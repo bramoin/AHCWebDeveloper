@@ -13,7 +13,9 @@ using AHCWebDeveloperExam.Models;
 namespace AHCWebDeveloperExam.Controllers
 {
     public class HomeController : Controller
-    {        
+    {
+//        public string DateRange = "WeekOverWeek";
+
         public ActionResult Index(string DateRange)
         {
             if (string.IsNullOrEmpty(DateRange))

@@ -77,22 +77,29 @@
 .OrderSummaryTable tr:first-child td:last-child{
 	border-width:0px 0px 1px 1px;
 }
-.DateRange {
+.menucontainer {
   text-align: right;
+}
+.DateRange {
+display:inline-block;
 }
 .DateRange a {
   -webkit-border-radius: 4;
   -moz-border-radius: 4;
   border-radius: 4px;
   font-family: Arial;
-  color: #ffffff;
+  color: #000000;
   font-size: 14px;
   padding: 5px;
-  background: #4887b0;
+  background: #e4dfdf;
   text-decoration: none;
 }
 
 .DateRange a:hover {
   background: #3cb0fd;
   text-decoration: none;
+}
+.DateRangeSelected a {
+  background: #005fbf;
+  color: #ffffff;
 }
