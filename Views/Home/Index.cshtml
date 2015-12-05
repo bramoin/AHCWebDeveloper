@@ -1,0 +1,130 @@
+﻿@model IEnumerable<AHCWebDeveloperExam.Models.OrderSummary>
+
+<!doctype html>
+<html>
+    <head>
+        <title>AHC Web Developer Exam</title>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+        <script src="/morris.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.min.js"></script>
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.min.css">
+        <link rel="stylesheet" href="/morris.css">
+        <link rel="stylesheet" href="/OrderSummary.css" />
+    </head>
+    <body>
+        <h1>Order Summary</h1>
+
+        <div class="DateRange">
+            @Html.ActionLink("By Week", "Index", new { DateRange = "WeekOverWeek" })
+            @Html.ActionLink("By Month", "Index", new { DateRange = "MonthOverMonth" })
+            @Html.ActionLink("By Year", "Index", new { DateRange = "YearOverYear" })
+        </div>
+
+        @{
+            double AverageOrderAmount = 0;
+            double TotalOrderAmount   = 0;
+         
+            double AverageShippedAmount = 0;
+            double TotalShippedAmount   = 0;
+        }
+
+        <center>
+            <div id="graph"></div>
+
+            <script type="text/javascript">
+
+                Morris.Bar({
+                    element: 'graph',
+                    data: [
+			             @foreach(var order in Model)
+			              {
+				             @Html.Raw("{x: '")
+					            @order.PeriodDate.ToShortDateString()
+					            @Html.Raw("', y: ") @order.TotalOrderedAmount.ToString()
+					            @Html.Raw(", z: ") @order.TotalShippedAmount.ToString()
+				             @Html.Raw("},")
+
+				              TotalOrderAmount   += order.TotalOrderedAmount;
+				              TotalShippedAmount += order.TotalShippedAmount;
+			              }
+			             @{
+				             AverageOrderAmount     = TotalOrderAmount / Model.Count();
+				             AverageShippedAmount   = TotalShippedAmount / Model.Count();
+			              }
+
+                    ],
+                    xkey: 'x',
+                    ykeys: ['y', 'z'],
+                    labels: ['Total Order Amount', 'Total Shipped Amount'],
+                });
+
+            </script>
+
+        </center>
+
+        <center>
+            <table>
+                <tr>
+                    <td>
+                        <div class="OrderSummaryTotal">
+                            @Html.Raw(String.Format("{0:C}", AverageOrderAmount))<br />Average Order Amount
+                        </div>
+                    </td>
+                    <td>
+                        <div class="OrderSummaryTotal">
+                            @Html.Raw(String.Format("{0:C}", TotalOrderAmount))<br />Total Order Amount
+                        </div>
+                    </td>
+                    <td>
+                        <div class="OrderSummaryTotal">
+                            @Html.Raw(String.Format("{0:C}", AverageShippedAmount))<br />Average Shipped Amount
+                        </div>
+                    </td>
+                    <td>
+                        <div class="OrderSummaryTotal">
+                            @Html.Raw(String.Format("{0:C}", TotalShippedAmount))<br />Total Shipped Amount
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </center>
+        <div class="OrderSummaryTable">
+            <table>
+                <tr>
+                    <td>Period</td>
+                    <td>Ordered</td>
+                    <td>Shipped</td>
+                    <td>Remainder</td>
+                    <td>Total Ordered Amount</td>
+                    <td>Total Shipped Amount</td>
+                </tr>
+                @{
+                    foreach (var order in Model)
+                    {
+                        <tr>
+                            <td>
+                                @order.PeriodDate.ToShortDateString()
+                            </td>
+                            <td>
+                                @order.Ordered
+                            </td>
+                            <td>
+                                @order.Shipped
+                            </td>
+                            <td>
+                                @order.Remainder
+                            </td>
+                            <td>
+                                @Html.Raw(String.Format("{0:C}", @order.TotalOrderedAmount))
+                            </td>
+                            <td>
+                                @Html.Raw(String.Format("{0:C}", @order.TotalShippedAmount))
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+    </body>
+</html>
