@@ -72,6 +72,7 @@
                     xkey: 'x',
                     ykeys: ['y', 'z'],
                     labels: ['Total Order Amount', 'Total Shipped Amount'],
+                    resize: true
                 });
            
            </script>           
@@ -82,22 +83,22 @@
                <tr>
                    <td>
                        <div class="OrderSummaryTotal">
-                           @Html.Raw(String.Format("{0:C}", AverageOrderAmount))<br />Average Order Amount
+                           @Html.Raw(String.Format("{0:C}", AverageOrderAmount))<br /><div class="subtitle">Average Order Amount</div>
                        </div>
                    </td>
                    <td>
                        <div class="OrderSummaryTotal">
-                           @Html.Raw(String.Format("{0:C}", TotalOrderAmount))<br />Total Order Amount
+                           @Html.Raw(String.Format("{0:C}", TotalOrderAmount))<br /><div class="subtitle">Total Order Amount</div>
                        </div>
                    </td>
                    <td>
                        <div class="OrderSummaryTotal">
-                           @Html.Raw(String.Format("{0:C}", AverageShippedAmount))<br />Average Shipped Amount
+                           @Html.Raw(String.Format("{0:C}", AverageShippedAmount))<br /><div class="subtitle">Average Shipped Amount</div>
                        </div>
                    </td>
                    <td>
                        <div class="OrderSummaryTotal">
-                           @Html.Raw(String.Format("{0:C}", TotalShippedAmount))<br />Total Shipped Amount
+                           @Html.Raw(String.Format("{0:C}", TotalShippedAmount))<br /><div class="subtitle">Total Shipped Amount</div>
                        </div>
                    </td>
                </tr>

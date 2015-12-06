@@ -2,33 +2,9 @@
 {
     font-family:Arial;
 }
-.OrderSummaryTotal {
-
-	border:1px solid #000000;
-    
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    text-align:center;	
-    margin:10px;
-	-moz-border-radius-bottomleft:5px;
-	-webkit-border-bottom-left-radius:5px;
-	border-bottom-left-radius:5px;
-	
-	-moz-border-radius-bottomright:5px;
-	-webkit-border-bottom-right-radius:5px;
-	border-bottom-right-radius:5px;
-	
-	-moz-border-radius-topright:5px;
-	-webkit-border-top-right-radius:5px;
-	border-top-right-radius:5px;
-	
-	-moz-border-radius-topleft:5px;
-	-webkit-border-top-left-radius:5px;
-	border-top-left-radius:5px;
+.menucontainer {
+  text-align: right;
 }
-
 .OrderSummaryTable {
 	margin:0px;padding:0px;
 	width:100%;
@@ -42,7 +18,6 @@
 	margin:0px;padding:0px;
 }
 .OrderSummaryTable tr:nth-child(odd){ background-color:#aad4ff; }
-
 .OrderSummaryTable tr:nth-child(even)    { background-color:#ffffff; }.OrderSummaryTable td{
 	vertical-align:middle;	
 	border:1px solid #000000;
@@ -77,8 +52,42 @@
 .OrderSummaryTable tr:first-child td:last-child{
 	border-width:0px 0px 1px 1px;
 }
-.menucontainer {
-  text-align: right;
+.OrderSummaryTotal {
+
+	border:1px solid #000000;
+
+    font-size: 12px;
+    
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    text-align:center;	
+
+    margin-top:10px;
+    margin-bottom:10px;
+    margin-left:20px;
+    margin-right:20px;
+
+	-moz-border-radius-bottomleft:5px;
+	-webkit-border-bottom-left-radius:5px;
+	border-bottom-left-radius:5px;
+	
+	-moz-border-radius-bottomright:5px;
+	-webkit-border-bottom-right-radius:5px;
+	border-bottom-right-radius:5px;
+	
+	-moz-border-radius-topright:5px;
+	-webkit-border-top-right-radius:5px;
+	border-top-right-radius:5px;
+	
+	-moz-border-radius-topleft:5px;
+	-webkit-border-top-left-radius:5px;
+	border-top-left-radius:5px;
+}
+.subtitle {
+  font-size: 10px;
 }
 .DateRange {
 display:inline-block;
